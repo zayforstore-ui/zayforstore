@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Básico -->
+  <title>ZayforStore — Moda Urbana & Estilo Premium</title>
+  <meta name="description" content="ZayforStore: Ropa urbana, deportiva, calzado, relojes, gorras y tecnología. Catálogo online con atención personalizada vía WhatsApp." />
+  <meta name="keywords" content="ropa urbana, ropa deportiva, gafas, calzado, relojes, gorras, tecnología, moda hombre, moda mujer" />
+  <meta name="author" content="ZayforStore" />
+
+  <!-- Open Graph (para compartir en redes) -->
+  <meta property="og:title" content="ZayforStore — Moda Urbana & Estilo Premium" />
+  <meta property="og:description" content="Catálogo de moda urbana, deportiva, calzado y más. Consulta por WhatsApp." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23e8ff00' font-family='sans-serif'%3EZ%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">ZAYFOR<span>STORE</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#categorias" class="nav-link">Categorías</a></li>
+        <li><a href="#productos" class="nav-link">Productos</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO / BANNER ========== -->
+  <section class="hero" id="inicio">
+    <div class="banda-promo banda-tl">PRECIOS ESPECIALES</div>
+    <div class="banda-promo banda-br">FERIA DE LA GANADERÍA</div>
+    <div class="hero-bg"></div>
+    <div class="hero-bg-hat"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Nueva colección 2026</p>
+      <h1 class="hero-title">
+        ESTILO<br/>
+        <span>SIN LÍMITES</span>
+      </h1>
+      <p class="hero-subtitle">Ropa urbana, deportiva y accesorios premium.<br/>Consulta por WhatsApp y recibe atención personalizada.</p>
+      <div class="feria-badge">
+        <div class="feria-flag">
+          <span class="feria-flag-y"></span>
+          <span class="feria-flag-b"></span>
+          <span class="feria-flag-r"></span>
+        </div>
+        <div class="feria-badge-content">
+          <span class="feria-colab">🇨🇴 Colaboración especial</span>
+          <strong class="feria-title">Feria de la Ganadería 2026</strong>
+          <span class="feria-date">🐂 Precios especiales · 5 al 15 de junio · Montería, Córdoba</span>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
+        <a href="#categorias" class="btn btn-outline">Categorías</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORÍAS ========== -->
+  <section class="categorias" id="categorias">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Explora</p>
+        <h2 class="section-title">Categorías</h2>
+      </div>
+
+      <div class="categorias-grid">
+
+        <div class="cat-card" onclick="filtrarCategoria('ropa-urbana')">
+          <div class="cat-icon"><i class="fas fa-tshirt"></i></div>
+          <h3>Ropa Urbana</h3>
+          <p>Streetwear auténtico</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('ropa-deportiva')">
+          <div class="cat-icon"><i class="fas fa-running"></i></div>
+          <h3>Ropa Deportiva</h3>
+          <p>Rendimiento y estilo</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('gafas')">
+          <div class="cat-icon"><i class="fas fa-glasses"></i></div>
+          <h3>Gafas</h3>
+          <p>Estilo y visión</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('hombres')">
+          <div class="cat-icon"><i class="fas fa-mars"></i></div>
+          <h3>Hombres</h3>
+          <p>Moda masculina</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('mujeres')">
+          <div class="cat-icon"><i class="fas fa-venus"></i></div>
+          <h3>Mujeres</h3>
+          <p>Moda femenina</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('calzado')">
+          <div class="cat-icon"><i class="fas fa-shoe-prints"></i></div>
+          <h3>Calzado</h3>
+          <p>Sneakers & más</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('relojes')">
+          <div class="cat-icon"><i class="fas fa-clock"></i></div>
+          <h3>Relojes</h3>
+          <p>Accesorios premium</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('gorras')">
+          <div class="cat-icon"><i class="fas fa-hat-cowboy"></i></div>
+          <h3>Gorras</h3>
+          <p>Caps & snapbacks</p>
+        </div>
+
+        <div class="cat-card" onclick="filtrarCategoria('tecnologia')">
+          <div class="cat-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Tecnología</h3>
+          <p>Gadgets & accesorios</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTOS ========== -->
+  <section class="productos-section" id="productos">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Catálogo</p>
+        <h2 class="section-title">Productos</h2>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filtros" id="filtros">
+        <button class="filtro-btn active" data-cat="todos" onclick="filtrarCategoria('todos')">Todos</button>
+        <button class="filtro-btn" data-cat="relojes" onclick="filtrarCategoria('relojes')">Relojes</button>
+        <button class="filtro-btn" data-cat="ropa-urbana" onclick="filtrarCategoria('ropa-urbana')">Urbana</button>
+        <button class="filtro-btn" data-cat="ropa-deportiva" onclick="filtrarCategoria('ropa-deportiva')">Deportiva</button>
+        <button class="filtro-btn" data-cat="gafas" onclick="filtrarCategoria('gafas')">Gafas</button>
+        <button class="filtro-btn" data-cat="hombres" onclick="filtrarCategoria('hombres')">Hombres</button>
+        <button class="filtro-btn" data-cat="mujeres" onclick="filtrarCategoria('mujeres')">Mujeres</button>
+        <button class="filtro-btn" data-cat="calzado" onclick="filtrarCategoria('calzado')">Calzado</button>
+        <button class="filtro-btn" data-cat="gorras" onclick="filtrarCategoria('gorras')">Gorras</button>
+        <button class="filtro-btn" data-cat="tecnologia" onclick="filtrarCategoria('tecnologia')">Tech</button>
+      </div>
+
+      <!-- Grid de productos - generado por JS -->
+      <div class="productos-grid" id="productosGrid"></div>
+
+      <p class="productos-empty" id="productosEmpty" style="display:none;">
+        No hay productos en esta categoría aún. ¡Próximamente!
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== BANNER CTA ========== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-content">
+        <h2>¿No encontraste lo que buscas?</h2>
+        <p>Escríbenos directamente y te ayudamos a encontrar lo que necesitas.</p>
+        <a href="https://wa.me/573116583622?text=Hola%20ZayforStore%2C%20quiero%20consultar%20sobre%20un%20producto" 
+           class="btn btn-primary" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACTO ========== -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Estamos aquí</p>
+        <h2 class="section-title">Contacto</h2>
+      </div>
+      <div class="contacto-grid">
+        <div class="contacto-card">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>Lunes a Sábado<br/>8am – 8pm</p>
+          <a href="https://wa.me/573116583622" target="_blank" class="btn btn-outline-small">Escribir</a>
+        </div>
+        <div class="contacto-card">
+          <i class="fab fa-instagram"></i>
+          <h3>Instagram</h3>
+          <p>@ZayforStore<br/>Síguenos para novedades</p>
+          <a href="https://www.instagram.com/zayforc4?igsh=ajlwdG54Nm93ejRh" target="_blank" class="btn btn-outline-small">Ver perfil</a>
+        </div>
+        <div class="contacto-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Ubicación</h3>
+          <p>Tu ciudad,<br/>Colombia</p>
+          <span class="btn btn-outline-small" style="opacity:0.4;cursor:default;">Ver mapa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">ZAYFOR<span>STORE</span></p>
+          <p class="footer-tagline">Estilo sin límites.</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Tienda</h4>
+          <ul>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#" onclick="filtrarCategoria('ropa-urbana')">Ropa Urbana</a></li>
+            <li><a href="#" onclick="filtrarCategoria('calzado')">Calzado</a></li>
+            <li><a href="#" onclick="filtrarCategoria('relojes')">Relojes</a></li>
+            <li><a href="#" onclick="filtrarCategoria('tecnologia')">Tecnología</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/zayforc4?igsh=ajlwdG54Nm93ejRh" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/573116583622" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@zaystoremtr" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ZayforStore. Todos los derechos reservados.</p>
+        <p>Hecho con <i class="fas fa-heart"></i> en Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== BOTÓN FLOTANTE WHATSAPP ========== -->
+  <a href="https://wa.me/573116583622?text=Hola%20ZayforStore%2C%20quiero%20ver%20el%20cat%C3%A1logo"
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="js/productos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
