@@ -1014,7 +1014,7 @@ function cambiarSlide(dot, index) {
   dot.classList.add('active');
 }
 
-function filtrarCategoria(cat) {
+function filtrarCategoria(cat, sinScroll = false) {
   // Actualizar botones activos
   document.querySelectorAll('.filtro-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === cat);
@@ -1036,11 +1036,24 @@ function filtrarCategoria(cat) {
     empty.style.display = 'none';
   }
 
-  // Scroll suave a la sección
-  document.getElementById('productos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (!sinScroll) {
+    document.getElementById('productos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function precargarImagenes() {
+  productos.forEach(p => {
+    if (p.imagenes) {
+      p.imagenes.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    }
+  });
 }
 
 // Cargar todos los productos al iniciar
 document.addEventListener('DOMContentLoaded', () => {
-  filtrarCategoria('todos');
+  filtrarCategoria('todos', true);
+  precargarImagenes();
 });
