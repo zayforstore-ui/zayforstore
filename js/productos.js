@@ -962,7 +962,7 @@ function crearTarjetaProducto(p) {
        <button class="carrusel-btn next" onclick="moverSlide(this,  1)" aria-label="Siguiente">&#8250;</button>` : '';
 
   return `
-    <div class="producto-card" data-categoria="${p.categoria}">
+    <div class="producto-card" data-categoria="${p.categoria}" data-product-id="${p.id}">
       <div class="producto-img-wrap">
         <div class="carrusel">
           ${slidesHTML}
@@ -1052,8 +1052,117 @@ function precargarImagenes() {
   });
 }
 
+/* ════════════════════════════════════════════
+   MODAL / LIGHTBOX
+   ════════════════════════════════════════════ */
+let modalProducto = null;
+let modalActual = 0;
+
+function abrirModal(producto, index) {
+  modalProducto = producto;
+  modalActual = index;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  actualizarModal();
+}
+
+function cerrarModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  modalProducto = null;
+}
+
+function actualizarModal() {
+  if (!modalProducto) return;
+  const fotos = modalProducto.imagenes;
+  const el = id => document.getElementById(id);
+
+  el('modalImage').src = fotos[modalActual];
+  el('modalImage').alt = `${modalProducto.nombre} - foto ${modalActual + 1}`;
+  el('modalName').textContent = modalProducto.nombre;
+  el('modalDesc').textContent = modalProducto.descripcion;
+  el('modalCategory').textContent = categoriaLabels[modalProducto.categoria] || modalProducto.categoria;
+  el('modalPrice').textContent = modalProducto.precio;
+
+  const precioAntesEl = el('modalPriceBefore');
+  if (modalProducto.precioAntes) {
+    precioAntesEl.textContent = modalProducto.precioAntes;
+    precioAntesEl.style.display = '';
+  } else {
+    precioAntesEl.style.display = 'none';
+  }
+
+  el('modalWhatsApp').href = `https://wa.me/${WHATSAPP_NUMERO}?text=${generarMensajeWhatsApp(modalProducto)}`;
+
+  const tieneMultiples = fotos.length > 1;
+  el('modalPrev').style.display = tieneMultiples ? '' : 'none';
+  el('modalNext').style.display = tieneMultiples ? '' : 'none';
+
+  const dotsContainer = el('modalDots');
+  if (tieneMultiples) {
+    dotsContainer.innerHTML = fotos.map((_, i) =>
+      `<span class="dot ${i === modalActual ? 'active' : ''}" onclick="modalIrA(${i})"></span>`
+    ).join('');
+    dotsContainer.style.display = '';
+  } else {
+    dotsContainer.style.display = 'none';
+  }
+}
+
+function modalMoverSlide(direccion) {
+  if (!modalProducto) return;
+  const fotos = modalProducto.imagenes;
+  modalActual = (modalActual + direccion + fotos.length) % fotos.length;
+  actualizarModal();
+}
+
+function modalIrA(index) {
+  modalActual = index;
+  actualizarModal();
+}
+
 // Cargar todos los productos al iniciar
 document.addEventListener('DOMContentLoaded', () => {
   filtrarCategoria('todos', true);
   precargarImagenes();
+
+  /* ── Eventos del modal ── */
+
+  // Click en imagen de producto → abrir modal
+  document.getElementById('productosGrid').addEventListener('click', (e) => {
+    const img = e.target.closest('.slide img');
+    if (!img) return;
+    if (img.closest('.img-placeholder')) return;
+
+    const card = img.closest('.producto-card');
+    if (!card) return;
+
+    const productId = card.dataset.productId;
+    const producto = productos.find(p => String(p.id) === productId);
+    if (!producto) return;
+
+    const carrusel = img.closest('.carrusel');
+    const slides = carrusel.querySelectorAll('.slide');
+    const activeIndex = [...slides].findIndex(s => s.classList.contains('active'));
+
+    abrirModal(producto, activeIndex >= 0 ? activeIndex : 0);
+  });
+
+  // Cerrar modal
+  document.getElementById('modalClose').addEventListener('click', cerrarModal);
+  document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) cerrarModal();
+  });
+
+  // Navegación
+  document.getElementById('modalPrev').addEventListener('click', () => modalMoverSlide(-1));
+  document.getElementById('modalNext').addEventListener('click', () => modalMoverSlide(1));
+
+  // Teclado
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('modalOverlay').classList.contains('active')) return;
+    if (e.key === 'Escape') cerrarModal();
+    if (e.key === 'ArrowLeft') modalMoverSlide(-1);
+    if (e.key === 'ArrowRight') modalMoverSlide(1);
+  });
 });
