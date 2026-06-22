@@ -489,7 +489,7 @@ const productos = [
     imagenes: [
       "images/productos/mujeres/vestidorojo.jpeg",
       "images/productos/mujeres/ROJO22.jpeg",
-      "images/productos/mujeres/vestido veice.jpeg",
+      "images/productos/mujeres/vestido-veice.jpeg",
     ],
     badge: "",
     icono: "fa-venus"
@@ -800,7 +800,6 @@ const productos = [
       "images/productos/gorras/gr3.jpeg",
       "images/productos/gorras/gr4.jpeg",
        "images/productos/gorras/gr5.jpeg",
-      "images/productos/gorras/gr6.jpeg",
       "images/productos/gorras/gr7.jpeg",
       "images/productos/gorras/gr8.jpeg",
        "images/productos/gorras/gr9.jpeg",
@@ -941,7 +940,8 @@ function crearTarjetaProducto(p) {
     ? fotos.map((src, i) => `
         <div class="slide ${i === 0 ? 'active' : ''}">
           <img src="${src}" alt="${p.nombre} - foto ${i + 1}" loading="lazy"
-            onerror="this.parentElement.innerHTML='<div class=\\'img-placeholder\\'><i class=\\'fas ${p.icono || 'fa-image'}\\'></i><span>Imagen próximamente</span></div>'" />
+            onload="this.closest('.producto-img-wrap').classList.add('loaded')"
+            onerror="this.closest('.slide').innerHTML='<div class=\\'img-placeholder\\'><i class=\\'fas ${p.icono || 'fa-image'}\\'></i><span>Imagen próximamente</span></div>';this.closest('.producto-img-wrap').classList.add('loaded')" />
         </div>`).join('')
     : `<div class="slide active">
          <div class="img-placeholder">
@@ -1041,17 +1041,6 @@ function filtrarCategoria(cat, sinScroll = false) {
   }
 }
 
-function precargarImagenes() {
-  productos.forEach(p => {
-    if (p.imagenes) {
-      p.imagenes.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    }
-  });
-}
-
 /* ════════════════════════════════════════════
    MODAL / LIGHTBOX
    ════════════════════════════════════════════ */
@@ -1124,7 +1113,6 @@ function modalIrA(index) {
 // Cargar todos los productos al iniciar
 document.addEventListener('DOMContentLoaded', () => {
   filtrarCategoria('todos', true);
-  precargarImagenes();
 
   /* ── Eventos del modal ── */
 

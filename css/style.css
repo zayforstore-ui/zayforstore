@@ -1129,3 +1129,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     font-size: 1.5rem;
   }
 }
+
+/* ============================================
+   SKELETON SHIMMER — carga de imágenes
+   ============================================ */
+.producto-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--gris-medio) 25%, var(--gris-oscuro) 50%, var(--gris-medio) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+.producto-img-wrap.loaded::before {
+  opacity: 0;
+  animation: none;
+  transition: opacity 0.3s ease;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+/* Placeholder también se beneficia del fondo shimmer */
+.img-placeholder {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Página no encontrada | ZayforStore</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23e8ff00' font-family='sans-serif'%3EZ%3C/text%3E%3C/svg%3E" />
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0f0f0f 100%);
+    }
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 12rem);
+      line-height: 1;
+      color: var(--acento);
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--blanco);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .error-desc {
+      color: var(--gris-texto);
+      font-size: 1rem;
+      max-width: 420px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .error-page .btn {
+      display: inline-flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <p class="error-code">404</p>
+    <h1 class="error-title">Página no encontrada</h1>
+    <p class="error-desc">Lo sentimos, la página que buscas no existe o fue movida. Vuelve al inicio para seguir explorando el catálogo.</p>
+    <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+  </div>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/573116583622?text=Hola%20ZayforStore%2C%20llegu%C3%A9%20a%20una%20p%C3%A1gina%20no%20encontrada"
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</body>
+</html>
